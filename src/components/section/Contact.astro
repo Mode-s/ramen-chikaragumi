@@ -1,9 +1,23 @@
 ---
+import { Icon } from 'astro-icon/components';
+
+const tel = '09071624273';
+const telDisplay = '090-7162-4273';
 ---
 <section class="section contact" id="contact">
   <div class="inner">
     <div class="section-title">
       <h2 class="title">お問い合わせ</h2>
+    </div>
+    <div class="content">
+      <p class="lead">ご予約・お問い合わせはお電話にて承っております。<br class="break" />お気軽にお問い合わせください。</p>
+
+      <a href={`tel:${tel}`} class="tel-button">
+        <Icon name="mdi:phone" class="tel-icon" />
+        <span class="tel-number">{telDisplay}</span>
+      </a>
+
+      <p class="note">受付時間 11:30〜21:00<br class="break" />（定休日：日曜）</p>
     </div>
   </div>
 </section>
@@ -11,4 +25,50 @@
 <style lang="scss">
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+    margin-top: 80px;
+  }
+
+  .lead {
+    line-height: 2;
+  }
+
+  .tel-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 56px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    @include sp {
+      padding: 16px 36px;
+    }
+  }
+
+  .tel-icon {
+    font-size: 1.5rem;
+  }
+
+  .note {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+  }
 </style>
