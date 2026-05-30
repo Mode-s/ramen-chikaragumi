@@ -1,12 +1,21 @@
 ---
----
-<section class="section">
-  <div class="inner">
+import { Image } from 'astro:assets';
 
+import infoBg from '../../assets/images/info-bg.jpeg';
+---
+<section class="section info" id="info">
+  <div class="inner">
+    <div class="section-title">
+      <h2 class="title">店舗情報</h2>
+    </div>
   </div>
 </section>
 
 <style lang="scss">
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
+
+  .info {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 </style>

@@ -1,12 +1,125 @@
 ---
----
-<section class="section">
-  <div class="inner">
+import { Image } from 'astro:assets';
 
+import ramen01 from '../../assets/images/ramenAll01.png';
+import ramen02 from '../../assets/images/ramen01.png';
+import ramen03 from '../../assets/images/shio01.png';
+import ramen04 from '../../assets/images/miso01.png';
+
+---
+<section class="section menu" id="menu">
+  <div class="inner">
+    <div class="section-title">
+      <h2 class="title">お品書き</h2>
+    </div>
+    <div class="content">
+      <ul class="menu-list">
+        <li class="menu-item">
+          <div class="menu-text">
+            <h3 class="menu-title">正油ラーメン全部のせ</h3>
+            <p class="text">正油ラーメンにとろ～り半熟の味玉をトッピング。<br class="break" />まろやかな味わいが加わり、満足感の高い一杯に。</p>
+          </div>
+          <figure class="menu-image">
+            <Image src={ ramen01 } alt="正油ラーメン全部のせ" />
+          </figure>
+        </li>
+        <li class="menu-item">
+          <div class="menu-text">
+            <h3 class="menu-title">正油ラーメン</h3>
+            <p class="text">力組の看板メニュー。醤油をベースに...</p>
+          </div>
+          <figure class="menu-image">
+            <Image src={ ramen02 } alt="正油ラーメン" />
+          </figure>
+        </li>
+        <li class="menu-item">
+          <div class="menu-text">
+            <h3 class="menu-title">塩ラーメン</h3>
+            <p class="text">あっさりしつつもコクが深い味わいが特徴です。</p>
+          </div>
+          <figure class="menu-image">
+            <Image src={ ramen03 } alt="塩ラーメン" />
+          </figure>
+        </li>
+        <li class="menu-item">
+          <div class="menu-text">
+            <h3 class="menu-title">辛味噌ラーメン</h3>
+            <p class="text">濃厚な味噌のコクと野菜の甘味が絶妙に絡み合う一杯。<br class="break" />特性味噌を溶かすことで、辛みと甘味が引き立つ奥深い味わい。</p>
+          </div>
+          <figure class="menu-image">
+            <Image class="image" src={ ramen04 } alt="辛味噌ラーメン" />
+          </figure>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <style lang="scss">
   @use "../../styles/variables" as *;
   @use "../../styles/mixins" as *;
+
+  .menu-title {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+    font-weight: bold;
+  }
+
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-top: 200px;
+  }
+
+  .menu-item {
+    display: flex;
+    gap: clamp(24px, 5vw, 90px);
+  }
+
+  .menu-item + .menu-item {
+    margin-top: clamp(80px, 20vw, 300px);
+  }
+
+  .menu-text,
+  .menu-image {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .menu-item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .text {
+    margin-top: 40px;
+  }
+
+  .menu-image {
+    flex: 1;
+    max-width: 700px;
+  }
+
+  @include tb {
+    .menu-item,
+    .menu-item:nth-child(even) {
+      flex-direction: column;
+    }
+
+    .menu-text {
+      margin: 0 auto;
+    }
+
+    .menu-image { 
+      max-width: 400px; 
+      margin: 0 auto;
+      }
+    }
+
+    .image {
+      text-align: center;
+    }
+
+  @include sp {
+    
+  }
 </style>

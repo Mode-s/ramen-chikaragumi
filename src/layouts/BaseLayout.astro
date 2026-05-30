@@ -37,13 +37,33 @@ const {
     <meta name="twitter:title" content={title}/>
     <meta name="twitter:description" content={description} />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet">
+
     <script src="../scripts/animation.ts"></script>
 	</head>
 	<body>
 		<Header />
+    <div class="bg-layer" aria-hidden="true"></div>
     <main>
       <slot />
     </main>
     <Footer />
 	</body>
 </html>
+
+<style lang="scss">
+  @use '../styles/variables' as *;
+  @use '../styles/mixins' as *;
+
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('../assets/images/bg-image.png');
+    background-size: cover;       /* 画面幅を変えても見切れず埋める */
+    background-position: center;  /* 中央基準で拡縮 */
+    background-repeat: no-repeat;
+  }
+</style>

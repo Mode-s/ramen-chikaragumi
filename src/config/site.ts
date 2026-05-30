@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "サイト名",
-  title: "ページタイトル",
+  title: "初代組系ラーメン麵魂力組",
   description: "ディスクリプション文",
   url: "https://example.com",      // 本番URL（OGPの絶対パス生成にも使う）
   ogImage: "/ogp.png",
