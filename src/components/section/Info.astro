@@ -50,7 +50,7 @@ import infoBg from '../../assets/images/info-bg.jpeg';
             <dt class="info-label">席数</dt>
             <dd class="info-data">9席</dd>
           </div>
-          <div class="info-row">
+          <div class="info-row sns">
             <dt class="info-label">SNS</dt>
             <dd class="info-data">
               <a href="" class="sns-link" target="_blank" rel="noopener noreferrer"><Icon name="simple-icons:x" /></a>
@@ -100,13 +100,23 @@ import infoBg from '../../assets/images/info-bg.jpeg';
     }
   }
 
+  .info-row.sns {
+    align-items: baseline;
+  }
+
+  .sns-link {
+    display: inline-flex;
+  }
+
   .info-label {
     flex: 0 0 6em;
   }
 
   .info-data {
+    display: flex;
     flex: 1 1 0;
     min-width: 0;
+    gap: 20px;
   }
 
   .tel {
