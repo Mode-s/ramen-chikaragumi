@@ -3,6 +3,26 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const animateHeroCopy = (timeline: gsap.core.Timeline, position: gsap.Position = '-=0.4') => {
+  const lines = gsap.utils.toArray<HTMLElement>('.hero-copy-line');
+
+  lines.forEach((line, index) => {
+    const chars = line.querySelectorAll('.hero-copy-char');
+
+    timeline.from(
+      chars,
+      {
+        autoAlpha: 0,
+        scaleY: 0,
+        duration: 1,
+        ease: 'power2.out',
+        stagger: 0.1,
+      },
+      index === 0 ? position : '+=0.06',
+    );
+  });
+};
+
 const initAnimation = () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -11,6 +31,7 @@ const initAnimation = () => {
       [
         '.header',
         '[data-hero-image]',
+        '.hero-copy-char',
         '.section-title',
         '.about .text',
         '.menu-item',
@@ -31,7 +52,7 @@ const initAnimation = () => {
     duration: 0.9,
   });
 
-  gsap
+  const heroTimeline = gsap
     .timeline()
     .from('.header', {
       autoAlpha: 0,
@@ -48,6 +69,8 @@ const initAnimation = () => {
       },
       '<0.1',
     );
+
+  animateHeroCopy(heroTimeline, '-=0.2');
 
   gsap.utils.toArray<HTMLElement>('.section-title').forEach((title) => {
     gsap.from(title, {
